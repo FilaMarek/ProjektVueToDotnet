@@ -21,8 +21,14 @@
 
 
 <script>
+import axios from 'axios';
 
 export default{
+created(){
+axios.get('https://localhost:5001/api/post')
+.then(res => console.log(res))
+.catch(err => console.log(err))
+},
   data(){
     return {
       postMessage: '',
