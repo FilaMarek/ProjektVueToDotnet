@@ -1,28 +1,26 @@
 <template>
 <div class="app">
-<side-menu>
-
-</side-menu>
-
+    <div id="nav">
+    <router-link to="/">Home</router-link> |
+  </div>
+  <router-view />
+<side-menu/>
 </div>
 
-<!--  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div> -->
-  <router-view />
 </template>
 
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import SideMenu from "@/components/SideMenu.vue"; // @ is an alias to /src
+import SideMenu from "@/components/SideMenu.vue";
+
 
 @Options({
-  name: 'Home',
-  components: {SideMenu}
+  name: 'viewPosts',
+  components: {SideMenu},
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+}
 </script>
 
 

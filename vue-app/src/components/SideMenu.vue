@@ -7,7 +7,7 @@
 
 <div class="post-control">
 
-<textarea v-model="postMessage" placeholder="Enter your opinion here"></textarea>
+<textarea v-model="postBody" placeholder="Enter your opinion here"></textarea>
 
 
 
@@ -24,21 +24,28 @@
 import axios from 'axios';
 
 export default{
-created(){
-axios.get('https://localhost:5001/api/post')
-.then(res => console.log(res))
-.catch(err => console.log(err))
-},
-  data(){
+
+  data() {
     return {
-      postMessage: '',
+      postBody: '',
+      createdOn: new Date().toISOString(),
+      updatedOn: new Date().toISOString(),
 
     };
   },
     methods: {
       SubmitForm() {
-        console.log("post " + this.postMessage);
-        this.postMessage = '';
+        const postCreated = {
+       createdOn: this.createdOn,
+       updatedOn: this.updatedOn,
+       postBody: this.postBody,
+        };
+        axios
+                .post(
+                  'https://localhost:5001/api/post',
+                  postCreated
+                )
+                .then((res) => console.log("done"));
       },
     },
 };
