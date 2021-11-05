@@ -2,15 +2,23 @@
   <div class="viewPosts">
 
   <button type="button" @click="add">Add Component</button>
+  <button type="button" @click="addPostsToFrontend">look for the post</button>
 
+<h2>Posts</h2>
+  <ul>
+    <li v-for="frontEndPost in frontEndPosts" :key ="frontEndPost"  >
+      <p>{{frontEndPost.createdOn}}</p>
+     <p>{{frontEndPost.postBody}}</p>
+    </li>
 
+  </ul>
 
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-let arrayMeeting = [];
+let arrayPosts = [];
 
 
 export default{
@@ -18,6 +26,7 @@ export default{
     data () {
       return {
         info: this.info,
+        frontEndPosts: [],
       }
     },
   methods: {
@@ -32,11 +41,17 @@ export default{
             //console.log(this.info.postBody);
           for(let i = 0; i <this.info.length; i++)
           {
-            arrayMeeting.push(this.info[i].postBody)
+            arrayPosts.push(this.info[i])
 
           }
-          console.log(arrayMeeting);
+          console.log(arrayPosts);
+
       },
+    addPostsToFrontend()
+    {
+        this.frontEndPosts = arrayPosts;
+        console.log("it works")
+    }
   },
 };
 
@@ -50,3 +65,8 @@ export default{
 
 
 </script>
+<style scoped>
+ul {
+  list-style-type: none; /* Remove bullets */
+}
+</style>
