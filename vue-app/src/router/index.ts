@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import viewPosts from "../views/viewPosts.vue";
+import viewPosts from "../components/viewPosts.vue";
 
 
 const routes: Array<RouteRecordRaw> = [

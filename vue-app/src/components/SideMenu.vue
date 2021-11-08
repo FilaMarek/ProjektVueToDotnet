@@ -6,7 +6,7 @@
 
 
 <div class="post-control">
-
+<input type="text" placeholder="User Name">
 <textarea v-model="postBody" placeholder="Enter your opinion here"></textarea>
 
 
@@ -24,17 +24,17 @@
 import axios from 'axios';
 
 export default{
-
   data() {
     return {
       postBody: '',
       createdOn: new Date().toISOString(),
       updatedOn: new Date().toISOString(),
 
+
     };
   },
     methods: {
-      SubmitForm() {
+       SubmitForm() {
         const postCreated = {
        createdOn: this.createdOn,
        updatedOn: this.updatedOn,
@@ -45,9 +45,11 @@ export default{
                   'https://localhost:5001/api/post',
                   postCreated
                 )
-                .then((res) => console.log("done"));
+                .then((res) =>
+                console.log(res.status));
+
+               },
       },
-    },
 };
 
 </script>
@@ -67,6 +69,12 @@ export default{
 
 textarea {
     max-width: 215px;
+    min-width: 173px;
+    min-height: 30px;
+}
+
+input{
+ width: 173px;
 }
 
 
