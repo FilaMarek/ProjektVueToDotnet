@@ -6,7 +6,7 @@
 
 
 <div class="post-control">
-<input type="text" placeholder="User Name">
+<input v-model="authorName" type="text" placeholder="User Name">
 <textarea v-model="postBody" placeholder="Enter your opinion here"></textarea>
 
 
@@ -26,19 +26,20 @@ import axios from 'axios';
 export default{
   data() {
     return {
-      postBody: '',
-      createdOn: new Date().toISOString(),
-      updatedOn: new Date().toISOString(),
-
+    postBody: '',
+    createdOn: new Date().toISOString(),
+    updatedOn: new Date().toISOString(),
+    authorName: '',
 
     };
   },
     methods: {
        SubmitForm() {
         const postCreated = {
-       createdOn: this.createdOn,
-       updatedOn: this.updatedOn,
-       postBody: this.postBody,
+      createdOn: this.createdOn,
+      updatedOn: this.updatedOn,
+      postBody: this.postBody,
+      authorName: this.authorName,
         };
         axios
                 .post(
