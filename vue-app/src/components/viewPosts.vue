@@ -9,7 +9,7 @@
       <!--{{frontEndPost.id}} -->
       <p>Autor: {{frontEndPost.authorName}} |   posted on: {{frontEndPost.createdOn}}</p>
      <h4>{{frontEndPost.postBody}}</h4>
-     <p>Kudos: {{frontEndPost.kudos}} <button @click="Kudos(frontEndPost.id)">+</button></p>
+     <p>Kudos: {{frontEndPost.kudos}} <button @click="Kudos(frontEndPost.id, frontEndPost.kudos + 1), frontEndPost.kudos += 1">+</button></p>
     </li>
 
   </ul>
@@ -30,6 +30,7 @@ created ()
 
     data () {
       return {
+        id: '',
         info: this.info,
         frontEndPosts: [],
       }
@@ -52,9 +53,21 @@ created ()
 
       },
 
-       Kudos()
+       Kudos(id)
        {
-            console.log(this.frontEndPost.id)
+
+
+
+          const postLiked = {
+          id : id
+        };
+        axios
+                .post(
+                  'https://localhost:5001/api/kudos',
+                  postLiked
+                )
+                .then((res) =>
+                console.log(res.status));
        },
 
 

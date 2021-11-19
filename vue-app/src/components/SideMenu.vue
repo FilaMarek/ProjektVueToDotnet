@@ -35,12 +35,21 @@ export default{
   },
     methods: {
        SubmitForm() {
-        const postCreated = {
+        const postCreated =
+        {
       createdOn: this.createdOn,
       updatedOn: this.updatedOn,
       postBody: this.postBody,
       authorName: this.authorName,
         };
+
+        if(!this.authorName || !this.postBody)
+        {
+          alert("Please fill out the user name and your opinion");
+
+        }
+        else{
+
         axios
                 .post(
                   'https://localhost:5001/api/post',
@@ -48,7 +57,11 @@ export default{
                 )
                 .then((res) =>
                 console.log(res.status));
-
+                     this.createdOn = '';
+                     this.updatedOn = '';
+                     this.postBody = '';
+                     this.authorName = '';
+        }
                },
       },
 };
