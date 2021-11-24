@@ -7,10 +7,15 @@
   <ul>
     <li v-for="frontEndPost in frontEndPosts"  :key ="frontEndPost"  >
       <!--{{frontEndPost.id}} -->
-      <p>Autor: {{frontEndPost.authorName}} |   posted on: {{frontEndPost.createdOn}}</p>
-     <h4>{{frontEndPost.postBody}}</h4>
-     <p>Kudos: {{frontEndPost.kudos}} <button @click="Kudos(frontEndPost.id, frontEndPost.kudos + 1), frontEndPost.kudos += 1">+</button></p>
+<div class="postHeader"><div class="author"><h4>Autor: {{frontEndPost.authorName}} </h4></div> <div class="postDate"><h5> posted on: {{frontEndPost.createdOn}}</h5></div>
+<div class="kudosButton"><h5>Kudos: {{frontEndPost.kudos}}</h5></div>
+<div class="plusik"><button class="button-3" @click="Kudos(frontEndPost.id, frontEndPost.kudos + 1), frontEndPost.kudos += 1">+</button></div>
+</div>
+
+     <p>{{frontEndPost.postBody}}</p>
+
     </li>
+
 
   </ul>
 
@@ -83,14 +88,84 @@ created ()
 
 
 
-
-
-
 </script>
 
 
 <style scoped>
 ul {
   list-style-type: none; /* Remove bullets */
+}
+
+.postHeader
+{
+display: grid;
+margin-left: 25%;
+grid-template-columns: 20% 15% 5% 5%;
+
+}
+
+.kudosButton
+{
+  text-align: left;
+margin-left: 20px;
+}
+.author{
+text-align: right;
+margin-right: 20px;
+}
+
+.postDate
+{
+margin-right: 0;
+text-align: left;
+}
+
+
+/* CSS */
+.button-3 {
+  appearance: none;
+  background-color: #41B883;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #41B883;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #41B883;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 </style>
