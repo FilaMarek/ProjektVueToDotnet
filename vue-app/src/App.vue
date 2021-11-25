@@ -54,6 +54,8 @@ export default class Home extends Vue {
 
 
 #nav {
+  margin-left: 250px;
+  text-align: left;
   padding: 30px;
 
   a {

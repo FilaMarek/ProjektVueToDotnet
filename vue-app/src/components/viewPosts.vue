@@ -2,18 +2,18 @@
   <div class="viewPosts">
 
 
+<div class="header"> <h2>Posts</h2></div>
 
-  <h2>Posts</h2>
   <ul>
     <li v-for="frontEndPost in frontEndPosts"  :key ="frontEndPost"  >
       <!--{{frontEndPost.id}} -->
+<div class="userPost">
 <div class="postHeader"><div class="author"><h4>Autor: {{frontEndPost.authorName}} </h4></div> <div class="postDate"><h5> posted on: {{frontEndPost.createdOn}}</h5></div>
-<div class="kudosButton"><h5>Kudos: {{frontEndPost.kudos}}</h5></div>
-<div class="plusik"><button class="button-3" @click="Kudos(frontEndPost.id, frontEndPost.kudos + 1), frontEndPost.kudos += 1">+</button></div>
+<div class="kudosButton"><h5>Kudos: {{frontEndPost.kudos}}</h5><div class="plusik"><button class="button-3" @click="Kudos(frontEndPost.id, frontEndPost.kudos + 1), frontEndPost.kudos += 1">+</button></div></div>
 </div>
-
-     <p>{{frontEndPost.postBody}}</p>
-
+<div class="postBody"><p>{{frontEndPost.postBody}}</p></div>
+</div>
+<div class="spacer"></div>
     </li>
 
 
@@ -82,13 +82,9 @@ created ()
 
 };
 
-
-
-
-
-
-
 </script>
+
+
 
 
 <style scoped>
@@ -96,17 +92,26 @@ ul {
   list-style-type: none; /* Remove bullets */
 }
 
+.header
+{
+
+  display: grid;
+  margin-left: 10%;
+  margin-right: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
 .postHeader
 {
 display: grid;
 margin-left: 25%;
-grid-template-columns: 20% 15% 5% 5%;
+grid-template-columns: 20% 20% 10%;
 
 }
 
 .kudosButton
 {
-  text-align: left;
+text-align: left;
 margin-left: 20px;
 }
 .author{
@@ -119,7 +124,24 @@ margin-right: 20px;
 margin-right: 0;
 text-align: left;
 }
+.spacer{
+  margin-top: 5px;
+}
+.userPost
+{
+  background-color: #35495E;
+  color:white;
+  display: grid;
+  margin-left: 10%;
+  margin-right: 5px;
+  border: 2px solid #41B883;
+  border-radius: 5px;
+}
 
+.postBody{
+  background-color: #41B883;
+
+}
 
 /* CSS */
 .button-3 {
